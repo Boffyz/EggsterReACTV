@@ -35,10 +35,20 @@ with the help of claude (im sorry)
 
 bro
 
+## found a bug, what do i do?
 
-## found a bug, what do i do
+Open an issue (duh)
 
-make an issue about it and give its logs?
+Please include:
+- Android version
+- Device model
+- what you ate yesterday
+- Xposed(lsposed/vector) framework version
+- Steps to reproduce the issue
+- Relevant logs
+- your favorite pet
+  
+(Please don't just say "it doesn't work" 😭)
 
 
 ## cool project! how can i support it?
