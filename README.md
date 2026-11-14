@@ -8,6 +8,6 @@ Eggster ReACTV
 
 Xposed Module for changing Easter Eggs
 
-supports ❓ and even some extras (like ❓)
+supports easter eggs from android gingerbread to oreo with and without root
 
 tbh i will be using ai on this because i don't know how to write code(except for html) so sorry if this is something that's ai vibecoded slop 🫩
