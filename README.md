@@ -10,4 +10,18 @@ Xposed Module for changing Easter Eggs
 
 supports easter eggs from android gingerbread to oreo with and without root
 
-tbh i will be using ai on this because i don't know how to write code(except for html) so sorry if this is something that's ai vibecoded slop 🫩
+## but why?
+
+the original repo only had a few easter eggs (not that im saying mine has more than the original repo 🫩)+i wanted to learn how to make android root/xposed apps :3
+
+## how?
+
+with the help of claude (im sorry)
+
+## vibecoded ai slop >>>:((((
+
+👍
+
+## where to download?
+
+bro
