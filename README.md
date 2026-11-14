@@ -16,12 +16,12 @@ supports easter eggs from android gingerbread to oreo with and without root
 the original repo only had a few easter eggs (not that im saying mine has more than the original repo 🫩)+i wanted to learn how to make android root/xposed apps :3
 
 
-## do i need root/xposed for this app to work
+## do i need root/xposed for this app to work?
 
 no, it can work without root
 
 > [!CAUTION]
-> If you don't have root yet want to do so, please know that rooting comes with a number of risks and "downsides"
+> If you don't have root yet want to root your phone, please know that rooting comes with a number of risks and "downsides"
 
 ## how?
 
@@ -34,3 +34,13 @@ with the help of claude (im sorry)
 ## where to download?
 
 bro
+
+
+## found a bug, what do i do
+
+make an issue about it and give its logs?
+
+
+## cool project! how can i support it?
+
+thanks! currently i have no plans to open a buy me a coffee/kofi thing (because tbh im not on the legal age to have a personal bank account/debit card), but you can star this project or leave a suggestion on what should i add to this forked project :)
