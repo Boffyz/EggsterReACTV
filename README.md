@@ -6,7 +6,7 @@ Eggster ReACTV
   
 ![Alt text](ic_web.png?raw=true "Logo")
 
-Xposed Module for changing Easter Eggs
+Xposed Module for changing Android Easter Eggs, the little interactive thing that shows when you click on android version for 6 times (access it though settings>about device>software information)
 
 supports easter eggs from android gingerbread to oreo with and without root
 
@@ -21,7 +21,7 @@ the original repo only had a few easter eggs (not that im saying mine has more t
 no, it can work without root
 
 > [!CAUTION]
-> If you don't have root yet want to root your phone, please know that rooting comes with a number of risks and "downsides"
+> If you don't have root yet want to root your phone, please bear in mind that rooting comes with a number of risks and "downsides"
 
 ## how?
 
