@@ -212,8 +212,7 @@
                 android:name=".eggs.oreo.PlatLogoActivity"
                 android:exported="true"
                 android:label="Oreo"
-                android:excludeFromRecents="true"
-                android:theme="@android:style/Theme.NoDisplay"/>
+                android:theme="@style/Theme.Wallpaper"/>
 
         <activity
                 android:name=".eggs.oreo.Ocquarium"
