@@ -8,7 +8,7 @@ Eggster ReACTV
 
 Xposed Module for changing Android Easter Eggs, the little interactive thing that shows when you click on android version for 6 times (access it though settings>about device>software information)
 
-supports easter eggs from android gingerbread to oreo with and without root
+supports from android gingerbread, all the way to oreo with and without root
 
 
 ## but why?
