@@ -1,6 +1,9 @@
 Eggster ReACTV
 ==============
-
+<p align="center">
+	<img src="https://img.shields.io/badge/Xposed-green?style=social&logo=android" alt="meowscarada" width="1000" />  
+<p align="center">
+  
 ![Alt text](ic_web.png?raw=true "Logo")
 
 Xposed Module for changing Easter Eggs
