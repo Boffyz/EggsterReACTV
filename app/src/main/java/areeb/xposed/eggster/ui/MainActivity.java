@@ -50,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         EggAdapter eggAdapter = new EggAdapter(this, eggs);
+        // "Extras" section (banner) at the bottom of the list
+        View extrasFooter = getLayoutInflater().inflate(R.layout.extras_footer, eggList, false);
+        eggList.addFooterView(extrasFooter, null, false);
         eggList.setAdapter(eggAdapter);
 
         handleActivation();
