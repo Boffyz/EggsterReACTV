@@ -220,6 +220,13 @@
                 android:label="Oreo"
                 android:theme="@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen"/>
 
+        <!-- Oreo 8.1: same octopus, cookie logo -->
+        <activity
+                android:name=".eggs.oreo81.PlatLogoActivity"
+                android:exported="true"
+                android:label="Oreo 8.1"
+                android:theme="@style/Theme.Wallpaper"/>
+
         <!-- Neko (Nougat cat collector), ported from AOSP -->
         <activity
                 android:name=".eggs.neko.PlatLogoActivity"

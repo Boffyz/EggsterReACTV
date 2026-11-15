@@ -15,7 +15,8 @@ public enum Egg {
     MARSHMALLOW("MM", "Marshmallow"),
     N_PREVIEW("N", "N"),
     NEKO("NEKO", "Neko"),
-    OREO("OREO", "Oreo");
+    OREO("OREO", "Oreo"),
+    OREO81("OREO81", "Oreo 8.1");
 
 
     public static int BUILD = Build.VERSION.SDK_INT;
