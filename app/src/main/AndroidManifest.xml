@@ -234,6 +234,26 @@
                 android:configChanges="orientation|keyboardHidden|screenSize|uiMode"
                 android:theme="@style/PaintTheme"/>
 
+        <!-- Android 10: the 1 and 0 puzzle, unlocks the Icon Quiz (Quares), ported from AOSP -->
+        <activity
+                android:name=".eggs.ten.PlatLogoActivity"
+                android:exported="true"
+                android:label="Android 10"
+                android:theme="@style/QuaresTheme"/>
+
+        <activity
+                android:name=".eggs.ten.QuaresActivity"
+                android:exported="false"
+                android:label="Icon Quiz"
+                android:theme="@style/QuaresTheme"/>
+
+        <!-- Android 11: the dial that goes to 11 (unlocks Neko), ported from AOSP -->
+        <activity
+                android:name=".eggs.eleven.PlatLogoActivity"
+                android:exported="true"
+                android:label="Android 11"
+                android:theme="@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen"/>
+
         <!-- Oreo 8.1: same octopus, cookie logo -->
         <activity
                 android:name=".eggs.oreo81.PlatLogoActivity"

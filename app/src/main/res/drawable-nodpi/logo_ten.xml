@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+        android:width="100dp"
+        android:height="100dp"
+        android:viewportWidth="48"
+        android:viewportHeight="48">
+    <path android:fillColor="#37474F"
+          android:pathData="M24,3 A21,21 0 1,1 23.99,3 Z"/>
+    <!-- the zero -->
+    <path android:strokeColor="#FFFFFF" android:strokeWidth="3.4"
+          android:pathData="M29,14 A10,10 0 1,1 28.99,14 Z"/>
+    <!-- the one, snapped diagonally -->
+    <path android:strokeColor="#FFFFFF" android:strokeWidth="3.4" android:strokeLineCap="round"
+          android:pathData="M11,35 L21,15"/>
+</vector>
