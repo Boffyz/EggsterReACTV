@@ -239,7 +239,7 @@
                 android:name=".eggs.ten.PlatLogoActivity"
                 android:exported="true"
                 android:label="Android 10"
-                android:theme="@style/QuaresTheme"/>
+                android:theme="@style/TenTheme"/>
 
         <activity
                 android:name=".eggs.ten.QuaresActivity"

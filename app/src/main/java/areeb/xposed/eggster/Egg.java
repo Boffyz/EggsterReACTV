@@ -18,8 +18,8 @@ public enum Egg {
     OREO("OREO", "Oreo"),
     OREO81("OREO81", "Oreo 8.1"),
     PIE("PIE", "Pie"),
-    ELEVEN("ELEVEN", "Android 11"),
-    TEN("TEN", "Android 10");
+    TEN("TEN", "Android 10"),
+    ELEVEN("ELEVEN", "Android 11");
 
 
     public static int BUILD = Build.VERSION.SDK_INT;
