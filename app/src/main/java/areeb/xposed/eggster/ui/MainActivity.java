@@ -53,6 +53,13 @@ public class MainActivity extends AppCompatActivity {
         // "Extras" section (banner) at the bottom of the list
         View extrasFooter = getLayoutInflater().inflate(R.layout.extras_footer, eggList, false);
         eggList.addFooterView(extrasFooter, null, false);
+        extrasFooter.findViewById(R.id.extras_lineage).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,
+                        areeb.xposed.eggster.eggs.lineage.PlatLogoActivity.class));
+            }
+        });
         eggList.setAdapter(eggAdapter);
 
         handleActivation();

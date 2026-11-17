@@ -2,4 +2,5 @@
 <resources>
     <string name="extras_title">Extras</string>
     <string name="extras_coming_soon">Coming soon</string>
+    <string name="extras_lineage_title">LineageOS</string>
 </resources>
