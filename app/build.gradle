@@ -48,3 +48,7 @@ dependencies {
     // Legacy Xposed API (LSPosed/Vector still load legacy modules)
     compileOnly 'de.robv.android.xposed:api:82'
 }
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}

@@ -247,6 +247,19 @@
                 android:label="Icon Quiz"
                 android:theme="@style/QuaresTheme"/>
 
+        <!-- Android 12 / 13: the clock + Dynamic Color bubbles, ported from AOSP -->
+        <activity
+                android:name=".eggs.twelve.PlatLogoActivity"
+                android:exported="true"
+                android:label="Android 12"
+                android:theme="@style/Theme.Wallpaper"/>
+
+        <activity
+                android:name=".eggs.thirteen.PlatLogoActivity"
+                android:exported="true"
+                android:label="Android 13"
+                android:theme="@style/Theme.Wallpaper"/>
+
         <!-- Android 11: the dial that goes to 11 (unlocks Neko), ported from AOSP -->
         <activity
                 android:name=".eggs.eleven.PlatLogoActivity"
