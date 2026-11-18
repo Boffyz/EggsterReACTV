@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
@@ -26,6 +27,7 @@ import android.view.ViewConfiguration;
 import android.widget.FrameLayout;
 
 import areeb.xposed.eggster.R;
+import areeb.xposed.eggster.eggs.lineage.squid.Ocquarium;
 
 public class PlatLogoActivity extends Activity {
     private FrameLayout mLayout;
@@ -51,15 +53,22 @@ public class PlatLogoActivity extends Activity {
         private int mDarkest;
         private float mOffset;
 
-        // LineageOS logo drawable
+        // LineageOS logo drawable, pre-rendered once into a bitmap (3x size) so each frame
+        // just draws a bitmap instead of re-rasterizing the vector through a color filter
         private final Drawable mLogo;
+        private final Bitmap mLogoBitmap;
+        private final Paint mLogoPaint = new Paint();
+        private final Paint mPaint = new Paint();
 
         public PBackground(Context context) {
             randomizePalette();
             // LineageOS logo
             mLogo = context.getResources().getDrawable(R.drawable.logo_lineage, context.getTheme());
             mLogo.setColorFilter(new ColorMatrixColorFilter(WHITE)); // apply color filter
-            mLogo.setBounds(0, 0, 360, 180); // Aspect ratio 2:1
+            mLogo.setBounds(0, 0, 1080, 540); // Aspect ratio 2:1, rendered at 3x
+            mLogoBitmap = Bitmap.createBitmap(1080, 540, Bitmap.Config.ARGB_8888);
+            mLogo.draw(new Canvas(mLogoBitmap));
+            mLogoPaint.setFilterBitmap(true);
         }
 
         /**
@@ -127,7 +136,8 @@ public class PlatLogoActivity extends Activity {
             }
             final float inner_w = mRadius * 0.667f;
 
-            final Paint paint = new Paint();
+            final Paint paint = mPaint;
+            paint.reset();
             paint.setStrokeCap(Paint.Cap.BUTT);
             canvas.translate(mX, mY);
 
@@ -136,13 +146,21 @@ public class PlatLogoActivity extends Activity {
 
             // Draw all the circles
             int i=0;
+            // distance from the center to the farthest screen corner: a ring at least this big
+            // covers the whole screen, so any ring under another full-screen ring is never visible
+            final float maxDist = (float) Math.hypot(Math.max(mX, width - mX),
+                    Math.max(mY, height - mY));
             while (w > mRadius * 1.55 + inner_w * 1.55) {
-                paint.setColor(0xFF000000 | mPalette[i % mPalette.length]);
-                // for a slower but more complete version:
-                // paint.setStrokeWidth(w);
-                // canvas.drawPath(p, paint);
-                canvas.drawOval(-w / 2, -w / 2, w / 2, w / 2, paint);
-                w -= inner_w * (1.1f + Math.sin((i / 20f + mOffset) * 3.14159f));
+                final float step = inner_w * (1.1f + (float) Math.sin((i / 20f + mOffset) * 3.14159f));
+                final float nextW = w - step;
+                if (nextW / 2 < maxDist) {
+                    paint.setColor(0xFF000000 | mPalette[i % mPalette.length]);
+                    // for a slower but more complete version:
+                    // paint.setStrokeWidth(w);
+                    // canvas.drawPath(p, paint);
+                    canvas.drawOval(-w / 2, -w / 2, w / 2, w / 2, paint);
+                }
+                w = nextW;
                 i++;
             }
 
@@ -193,8 +211,9 @@ public class PlatLogoActivity extends Activity {
             {
                 canvas.translate((-360 / 2f) * mRadius / BASE_SCALE,
                                 (-180 / 2f) * mRadius / BASE_SCALE);
-                canvas.scale(mRadius / BASE_SCALE, mRadius / BASE_SCALE);
-                mLogo.draw(canvas);
+                final float logoScale = mRadius / BASE_SCALE / 3f; // bitmap is 3x the logo units
+                canvas.scale(logoScale, logoScale);
+                canvas.drawBitmap(mLogoBitmap, 0, 0, mLogoPaint);
             }
             canvas.restore();
 
@@ -228,11 +247,11 @@ public class PlatLogoActivity extends Activity {
                 // Launch the Easter Egg
                 mLayout.post(() -> {
                     try {
-                        startActivity(new Intent("org.lineageos.lineageparts.EASTER_EGG")
+                        // Stage 2: LineageOS's own "squid" (the original launches it via a LineageParts action)
+                        startActivity(new Intent(PlatLogoActivity.this, Ocquarium.class)
                                 .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                        | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS)
-                                .addCategory("com.android.internal.category.PLATLOGO"));
+                                        | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS));
                     } catch (ActivityNotFoundException ex) {
                         Log.e("PlatLogoActivity", "No more eggs.");
                     }

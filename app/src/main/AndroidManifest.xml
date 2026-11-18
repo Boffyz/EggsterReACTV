@@ -250,9 +250,16 @@
         <!-- LineageOS egg (shown in the Extras section), ported from LineageParts -->
         <activity
                 android:name=".eggs.lineage.PlatLogoActivity"
-                android:exported="false"
+                android:exported="true"
                 android:label="LineageOS"
                 android:theme="@style/Theme.Wallpaper"/>
+
+        <!-- LineageOS squid (stage 2 of the LineageOS egg) -->
+        <activity
+                android:name=".eggs.lineage.squid.Ocquarium"
+                android:exported="false"
+                android:label="LineageOS"
+                android:theme="@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen"/>
 
         <!-- Android 12 / 13: the clock + Dynamic Color bubbles, ported from AOSP -->
         <activity
