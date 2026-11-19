@@ -250,7 +250,7 @@
         <!-- LineageOS egg (shown in the Extras section), ported from LineageParts -->
         <activity
                 android:name=".eggs.lineage.PlatLogoActivity"
-                android:exported="true"
+                android:exported="false"
                 android:label="LineageOS"
                 android:theme="@style/Theme.Wallpaper"/>
 
@@ -259,6 +259,28 @@
                 android:name=".eggs.lineage.squid.Ocquarium"
                 android:exported="false"
                 android:label="LineageOS"
+                android:theme="@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen"/>
+
+        <!-- Android 14 / 15: Landroid, the space game (Jetpack Compose), ported from AOSP -->
+        <activity
+                android:name=".eggs.fourteen.PlatLogoActivity"
+                android:exported="true"
+                android:label="Android 14"
+                android:excludeFromRecents="true"
+                android:theme="@android:style/Theme.NoDisplay"/>
+
+        <activity
+                android:name=".eggs.fifteen.PlatLogoActivity"
+                android:exported="true"
+                android:label="Android 15"
+                android:excludeFromRecents="true"
+                android:theme="@android:style/Theme.NoDisplay"/>
+
+        <activity
+                android:name=".eggs.landroid.MainActivity"
+                android:exported="false"
+                android:label="@string/u_egg_name"
+                android:configChanges="orientation|screenLayout|screenSize|density"
                 android:theme="@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen"/>
 
         <!-- Android 12 / 13: the clock + Dynamic Color bubbles, ported from AOSP -->

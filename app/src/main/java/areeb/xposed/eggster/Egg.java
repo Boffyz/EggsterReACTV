@@ -22,7 +22,8 @@ public enum Egg {
     ELEVEN("ELEVEN", "Android 11"),
     TWELVE("TWELVE", "Android 12"),
     THIRTEEN("THIRTEEN", "Android 13"),
-    LINEAGE("LINEAGE", "LineageOS");
+    FOURTEEN("FOURTEEN", "Android 14"),
+    FIFTEEN("FIFTEEN", "Android 15");
 
 
     public static int BUILD = Build.VERSION.SDK_INT;
