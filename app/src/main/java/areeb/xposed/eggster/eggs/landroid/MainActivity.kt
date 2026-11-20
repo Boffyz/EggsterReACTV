@@ -64,8 +64,6 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Devices
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.math.MathUtils.clamp
@@ -364,20 +362,6 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-}
-
-@Preview(name = "phone", device = Devices.PHONE)
-@Preview(name = "fold", device = Devices.FOLDABLE)
-@Preview(name = "tablet", device = Devices.TABLET)
-@Composable
-fun MainActivityPreview() {
-    val universe = VisibleUniverse(namer = Namer(Resources.getSystem()), randomSeed = randomSeed())
-
-    universe.initTest()
-
-    Spaaaace(modifier = Modifier.fillMaxSize(), universe)
-    DebugText(DEBUG_TEXT)
-    Telemetry(universe)
 }
 
 @Composable
