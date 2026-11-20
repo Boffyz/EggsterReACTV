@@ -266,15 +266,13 @@
                 android:name=".eggs.fourteen.PlatLogoActivity"
                 android:exported="true"
                 android:label="Android 14"
-                android:excludeFromRecents="true"
-                android:theme="@android:style/Theme.NoDisplay"/>
+                android:theme="@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen"/>
 
         <activity
                 android:name=".eggs.fifteen.PlatLogoActivity"
                 android:exported="true"
                 android:label="Android 15"
-                android:excludeFromRecents="true"
-                android:theme="@android:style/Theme.NoDisplay"/>
+                android:theme="@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen"/>
 
         <activity
                 android:name=".eggs.landroid.MainActivity"
