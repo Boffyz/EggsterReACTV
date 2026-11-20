@@ -23,7 +23,8 @@ public enum Egg {
     TWELVE("TWELVE", "Android 12"),
     THIRTEEN("THIRTEEN", "Android 13"),
     FOURTEEN("FOURTEEN", "Android 14"),
-    FIFTEEN("FIFTEEN", "Android 15");
+    FIFTEEN("FIFTEEN", "Android 15"),
+    LINEAGE("LINEAGE", "LineageOS"); // shown in the Extras section, not in the main list
 
 
     public static int BUILD = Build.VERSION.SDK_INT;

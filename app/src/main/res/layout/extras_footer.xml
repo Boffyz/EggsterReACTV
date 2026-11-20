@@ -46,6 +46,14 @@
                 android:paddingRight="10dp"
                 android:text="@string/extras_lineage_title"
                 android:textSize="15sp"/>
+
+        <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/extras_lineage_select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"/>
     </RelativeLayout>
 
     <ImageView

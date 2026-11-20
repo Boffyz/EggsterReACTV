@@ -11,6 +11,7 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.*;
@@ -46,24 +47,75 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<Egg> eggs = new ArrayList<>();
         for (Egg e : Egg.values()) {
-            eggs.add(e);
+            if (e != Egg.LINEAGE) { // LineageOS has its own switch in the Extras section
+                eggs.add(e);
+            }
         }
 
-        EggAdapter eggAdapter = new EggAdapter(this, eggs);
+        final EggAdapter eggAdapter = new EggAdapter(this, eggs);
         // "Extras" section (banner) at the bottom of the list
         View extrasFooter = getLayoutInflater().inflate(R.layout.extras_footer, eggList, false);
         eggList.addFooterView(extrasFooter, null, false);
-        extrasFooter.findViewById(R.id.extras_lineage).setOnClickListener(new View.OnClickListener() {
+        setupExtrasLineage(extrasFooter, eggAdapter);
+        eggList.setAdapter(eggAdapter);
+
+        handleActivation();
+        handleWarnings();
+    }
+
+    private CompoundButton.OnCheckedChangeListener lineageListener;
+
+    /** The LineageOS row in Extras: tap the logo to open it, flip the switch to use it as the egg. */
+    private void setupExtrasLineage(View footer, final EggAdapter adapter) {
+        final SwitchCompat lineageSwitch = (SwitchCompat) footer.findViewById(R.id.extras_lineage_select);
+        final View row = footer.findViewById(R.id.extras_lineage);
+
+        footer.findViewById(R.id.extras_lineage_image).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this,
                         areeb.xposed.eggster.eggs.lineage.PlatLogoActivity.class));
             }
         });
-        eggList.setAdapter(eggAdapter);
 
-        handleActivation();
-        handleWarnings();
+        if (!PreferenceManager.isModuleActive()) {
+            lineageSwitch.setEnabled(false); // same rule as the switches in the main list
+            return;
+        }
+        lineageSwitch.setEnabled(true);
+
+        lineageListener = new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton button, boolean checked) {
+                PreferenceManager pm = new PreferenceManager(MainActivity.this);
+                if (checked) {
+                    pm.setEnabled(true);
+                    pm.setEasterEgg(Egg.LINEAGE);
+                } else {
+                    pm.setEnabled(false);
+                }
+                adapter.setSelected(checked ? Egg.LINEAGE.getId() : null);
+            }
+        };
+        lineageSwitch.setChecked(Egg.LINEAGE.getId().equals(new PreferenceManager(this).getEasterEgg()));
+        lineageSwitch.setOnCheckedChangeListener(lineageListener);
+
+        // picking an egg in the main list switches this one off, and vice versa
+        adapter.setSelectionListener(new EggAdapter.SelectionListener() {
+            @Override
+            public void onSelectionChanged(String selectedId) {
+                lineageSwitch.setOnCheckedChangeListener(null);
+                lineageSwitch.setChecked(Egg.LINEAGE.getId().equals(selectedId));
+                lineageSwitch.setOnCheckedChangeListener(lineageListener);
+            }
+        });
+
+        row.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lineageSwitch.toggle();
+            }
+        });
     }
 
     private boolean isAppInstalled(String uri) {

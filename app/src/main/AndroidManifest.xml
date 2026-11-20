@@ -250,7 +250,7 @@
         <!-- LineageOS egg (shown in the Extras section), ported from LineageParts -->
         <activity
                 android:name=".eggs.lineage.PlatLogoActivity"
-                android:exported="false"
+                android:exported="true"
                 android:label="LineageOS"
                 android:theme="@style/Theme.Wallpaper"/>
 

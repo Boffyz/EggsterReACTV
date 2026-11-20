@@ -25,6 +25,23 @@ public class EggAdapter extends ArrayAdapter<Egg> {
 
     private String selected = null;
 
+    /** Lets other parts of the screen (the Extras switch) follow the current selection. */
+    public interface SelectionListener {
+        void onSelectionChanged(String selectedId);
+    }
+
+    private SelectionListener selectionListener;
+
+    public void setSelectionListener(SelectionListener listener) {
+        selectionListener = listener;
+    }
+
+    /** Changes the selected egg id (or null for none) and refreshes the switches. */
+    public void setSelected(String id) {
+        selected = id;
+        notifyDataSetChanged();
+    }
+
 
     public EggAdapter(Context context, ArrayList<Egg> eggs) {
         super(context, 0, eggs);
@@ -107,6 +124,10 @@ public class EggAdapter extends ArrayAdapter<Egg> {
                 } else {
                     preferenceManager.setEnabled(false);
                     selected = null;
+                }
+
+                if (selectionListener != null) {
+                    selectionListener.onSelectionChanged(selected);
                 }
 
                 Handler handler = new Handler();
