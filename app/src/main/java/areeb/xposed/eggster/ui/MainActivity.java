@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void handleActivation() {
         if (!PreferenceManager.isModuleActive()) {
-            Snackbar snackbar = Snackbar.make(eggList, "Xposed Module isn't enabled, auto non-root mode", Snackbar.LENGTH_INDEFINITE);
+            Snackbar snackbar = Snackbar.make(eggList, "Xposed Module isn't enabled", Snackbar.LENGTH_INDEFINITE);
             PackageManager packageManager = getPackageManager();
 
             final Intent intent = new Intent("de.robv.android.xposed.installer.OPEN_SECTION");
@@ -281,8 +281,5 @@ public class MainActivity extends AppCompatActivity {
 
         pref.edit().putInt("version", BuildConfig.VERSION_CODE).commit();
     }
-
-}
- }
 
 }
