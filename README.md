@@ -8,20 +8,20 @@ Eggster ReACTV
 
 Xposed Module for changing Android Easter Eggs, the little interactive thing that shows when you click on android version for 6 times (access it though settings>about device>software information)
 
-supports from android gingerbread, all the way to oreo with and without root
+supports from **Android GingerBread**, all the way to **Vanilla Ice Cream (Android 15)** with (and without) *Root*
 
 
 ## but why?
 
-the original repo only had a few easter eggs (not that im saying mine has more than the original repo 🫩)+i wanted to learn how to make android root/xposed apps :3
+the original repo only had a few easter eggs+i wanted to learn how to make Android Root/Xposed apps :3
 
 
 ## do i need root/xposed for this app to work?
 
-no, it can work without root
+no, it can **work without root**
 
 > [!CAUTION]
-> If you don't have root yet want to root your phone, please bear in mind that rooting comes with a number of risks and "downsides"
+> If you don't have Root yet want to Root your Phone, please bear in mind that Rooting comes with a number of risks and "downsides"
 
 ## how?
 
@@ -29,26 +29,26 @@ with the help of claude (im sorry)
 
 ## vibecoded ai slop >>>:((((
 
-👍
+*👍*
 
 ## where to download?
 
-bro
+**bro**
 
 ## found a bug, what do i do?
 
 Open an issue (duh)
 
 Please include:
-- Android version
-- Device model
-- what you ate yesterday
-- Xposed(lsposed/vector) framework version
-- Steps to reproduce the issue
-- Relevant logs
-- your favorite pet
+- **Android version**
+- **Device model**
+- **what you ate yesterday**
+- **Xposed(lsposed/vector) framework version**
+- **Steps to reproduce the issue**
+- **Relevant Logs**
+- **your favorite pet**
   
-(Please don't just say "it doesn't work" 😭)
+(Please don't just say *"it doesn't work"* 😭)
 
 
 ## cool project! how can i support it?
