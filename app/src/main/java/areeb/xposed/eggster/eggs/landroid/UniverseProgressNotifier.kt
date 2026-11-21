@@ -85,9 +85,20 @@ class UniverseProgressNotifier(val context: Context, val universe: Universe) {
             )
             .setFlag(Notification.FLAG_ONLY_ALERT_ONCE, true)
             .setOngoing(true)
-            .setRequestPromotedOngoing(true)
             .setColor(Colors.Eigengrau2.toArgb())
             .setStyle(progress)
+
+    init {
+        // setRequestPromotedOngoing only exists in newer SDKs (Android 16 QPR and later), so it
+        // is requested by name: the app still compiles against SDK 36 and uses it where available.
+        try {
+            Notification.Builder::class.java
+                .getMethod("setRequestPromotedOngoing", java.lang.Boolean.TYPE)
+                .invoke(builder, true)
+        } catch (e: Throwable) {
+            // not available on this version: the notification works without it
+        }
+    }
 
     private var lastUpdate = 0f
     private var initialDistToTarget = 0
