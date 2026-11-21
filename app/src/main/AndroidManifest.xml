@@ -274,6 +274,19 @@
                 android:label="Android 15"
                 android:theme="@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen"/>
 
+        <!-- Android 16 / 17: hold-to-launch logo (16) and connect-the-dots puzzle (17) -> Landroid -->
+        <activity
+                android:name=".eggs.sixteen.PlatLogoActivity"
+                android:exported="true"
+                android:label="Android 16"
+                android:theme="@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen"/>
+
+        <activity
+                android:name=".eggs.seventeen.PlatLogoActivity"
+                android:exported="true"
+                android:label="Android 17"
+                android:theme="@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen"/>
+
         <activity
                 android:name=".eggs.landroid.MainActivity"
                 android:exported="false"

@@ -24,6 +24,8 @@ public enum Egg {
     THIRTEEN("THIRTEEN", "Android 13"),
     FOURTEEN("FOURTEEN", "Android 14"),
     FIFTEEN("FIFTEEN", "Android 15"),
+    SIXTEEN("SIXTEEN", "Android 16"),
+    SEVENTEEN("SEVENTEEN", "Android 17"),
     LINEAGE("LINEAGE", "LineageOS"); // shown in the Extras section, not in the main list
 
 
