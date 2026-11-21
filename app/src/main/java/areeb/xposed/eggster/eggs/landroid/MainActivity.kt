@@ -345,7 +345,8 @@ class MainActivity : ComponentActivity() {
         universe.add(autopilot)
         autopilot.enabled = false
 
-        notifier = UniverseProgressNotifier(this, universe)
+        // The live "progress" notification (ProgressStyle) only exists on Android 16+
+        notifier = if (Build.VERSION.SDK_INT >= 36) UniverseProgressNotifier(this, universe) else null
 
         setContent {
             Spaaaace(modifier = Modifier.fillMaxSize(), u = universe, foldState = foldState)

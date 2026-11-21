@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace 'areeb.xposed.eggster'
-    compileSdk 35
+    compileSdk 36
 
     defaultConfig {
         applicationId "areeb.xposed.eggster"
