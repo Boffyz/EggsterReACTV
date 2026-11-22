@@ -16,6 +16,8 @@
 
 package areeb.xposed.eggster.eggs.twelve;
 
+import areeb.xposed.eggster.EggNav;
+
 import static android.graphics.PixelFormat.TRANSLUCENT;
 
 import android.animation.ObjectAnimator;
@@ -264,4 +266,14 @@ public class PlatLogoActivity extends Activity {
         }
     }
 
+    // --- back navigation: see EggNav ---
+    @Override
+    public void onBackPressed() {
+        EggNav.back(this);
+    }
+
+    @Override
+    public void startActivity(Intent intent) {
+        super.startActivity(EggNav.carry(this, intent));
+    }
 }

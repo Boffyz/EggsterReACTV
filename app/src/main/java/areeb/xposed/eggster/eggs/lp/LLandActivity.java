@@ -1,5 +1,8 @@
 package areeb.xposed.eggster.eggs.lp;
 
+import areeb.xposed.eggster.EggNav;
+import android.content.Intent;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,5 +19,16 @@ public class LLandActivity extends Activity {
         world.setScoreField((TextView) findViewById(R.id.score));
         world.setSplash(findViewById(R.id.welcome));
         Log.v(LLand.TAG, "focus: " + world.requestFocus());
+    }
+
+    // --- back navigation: see EggNav ---
+    @Override
+    public void onBackPressed() {
+        EggNav.back(this);
+    }
+
+    @Override
+    public void startActivity(Intent intent) {
+        super.startActivity(EggNav.carry(this, intent));
     }
 }

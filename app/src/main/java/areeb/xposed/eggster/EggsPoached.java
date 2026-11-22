@@ -45,6 +45,8 @@ public class EggsPoached implements IXposedHookZygoteInit, IXposedHookLoadPackag
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK |
                             Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
                     intent.setComponent(new ComponentName(PACKAGE_NAME, egg.getPackage()));
+                    // tells the egg it was opened from Settings > About phone, so back returns there
+                    intent.putExtra("areeb.xposed.eggster.FROM_SETTINGS", true);
 
                     try {
                         callMethod(platLogoActivity, "finish");

@@ -14,6 +14,9 @@
 
 package areeb.xposed.eggster.eggs.oreo;
 
+import areeb.xposed.eggster.EggNav;
+import android.content.Intent;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -73,5 +76,16 @@ public class Ocquarium extends Activity {
                 return true;
             }
         });
+    }
+
+    // --- back navigation: see EggNav ---
+    @Override
+    public void onBackPressed() {
+        EggNav.back(this);
+    }
+
+    @Override
+    public void startActivity(Intent intent) {
+        super.startActivity(EggNav.carry(this, intent));
     }
 }

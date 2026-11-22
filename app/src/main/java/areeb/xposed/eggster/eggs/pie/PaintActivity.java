@@ -16,6 +16,9 @@
 
 package areeb.xposed.eggster.eggs.pie;
 
+import areeb.xposed.eggster.EggNav;
+import android.content.Intent;
+
 import static android.view.MotionEvent.ACTION_CANCEL;
 import static android.view.MotionEvent.ACTION_DOWN;
 import static android.view.MotionEvent.ACTION_MOVE;
@@ -342,4 +345,14 @@ public class PaintActivity extends Activity {
         super.onPostResume();
     }
 
+    // --- back navigation: see EggNav ---
+    @Override
+    public void onBackPressed() {
+        EggNav.back(this);
+    }
+
+    @Override
+    public void startActivity(Intent intent) {
+        super.startActivity(EggNav.carry(this, intent));
+    }
 }

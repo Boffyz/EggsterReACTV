@@ -15,6 +15,8 @@
  */
 package areeb.xposed.eggster.eggs.custom;
 
+import areeb.xposed.eggster.EggNav;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -87,5 +89,16 @@ public class CustomLogoActivity extends Activity {
         });
 
         setContentView(mContent);
+    }
+
+    // --- back navigation: see EggNav ---
+    @Override
+    public void onBackPressed() {
+        EggNav.back(this);
+    }
+
+    @Override
+    public void startActivity(Intent intent) {
+        super.startActivity(EggNav.carry(this, intent));
     }
 }

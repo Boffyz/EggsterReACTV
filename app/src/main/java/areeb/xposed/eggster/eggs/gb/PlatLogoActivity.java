@@ -1,5 +1,8 @@
 package areeb.xposed.eggster.eggs.gb;
 
+import areeb.xposed.eggster.EggNav;
+import android.content.Intent;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -30,5 +33,16 @@ public class PlatLogoActivity extends Activity {
             mToast.show();
         }
         return super.dispatchTouchEvent(ev);
+    }
+
+    // --- back navigation: see EggNav ---
+    @Override
+    public void onBackPressed() {
+        EggNav.back(this);
+    }
+
+    @Override
+    public void startActivity(Intent intent) {
+        super.startActivity(EggNav.carry(this, intent));
     }
 }

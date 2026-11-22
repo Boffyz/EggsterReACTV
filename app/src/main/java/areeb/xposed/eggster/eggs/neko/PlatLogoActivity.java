@@ -1,5 +1,7 @@
 package areeb.xposed.eggster.eggs.neko;
 
+import areeb.xposed.eggster.EggNav;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
@@ -17,5 +19,16 @@ public class PlatLogoActivity extends Activity {
             startActivity(new Intent(this, NekoLand.class));
         }
         finish();
+    }
+
+    // --- back navigation: see EggNav ---
+    @Override
+    public void onBackPressed() {
+        EggNav.back(this);
+    }
+
+    @Override
+    public void startActivity(Intent intent) {
+        super.startActivity(EggNav.carry(this, intent));
     }
 }

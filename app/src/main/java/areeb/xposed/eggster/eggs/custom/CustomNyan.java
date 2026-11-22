@@ -16,6 +16,9 @@
 
 package areeb.xposed.eggster.eggs.custom;
 
+import areeb.xposed.eggster.EggNav;
+import android.content.Intent;
+
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
@@ -234,5 +237,16 @@ public class CustomNyan extends Activity {
                 setX(getX() + v * dt);
             }
         }
+    }
+
+    // --- back navigation: see EggNav ---
+    @Override
+    public void onBackPressed() {
+        EggNav.back(this);
+    }
+
+    @Override
+    public void startActivity(Intent intent) {
+        super.startActivity(EggNav.carry(this, intent));
     }
 }

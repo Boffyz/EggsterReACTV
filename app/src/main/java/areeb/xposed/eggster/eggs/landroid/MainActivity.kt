@@ -16,6 +16,9 @@
 
 package areeb.xposed.eggster.eggs.landroid
 
+import areeb.xposed.eggster.EggNav
+import android.content.Intent
+
 import android.content.res.Resources
 import android.os.Build
 import android.os.Bundle
@@ -320,6 +323,17 @@ fun Telemetry(universe: Universe, showControls: Boolean) {
 }
 
 class MainActivity : ComponentActivity() {
+
+    // --- back navigation: see EggNav ---
+    @Suppress("OVERRIDE_DEPRECATION")
+    override fun onBackPressed() {
+        EggNav.back(this)
+    }
+
+    override fun startActivity(intent: Intent?) {
+        super.startActivity(EggNav.carry(this, intent))
+    }
+
     private var notifier: UniverseProgressNotifier? = null
     private var foldState = mutableStateOf<FoldingFeature?>(null)
 

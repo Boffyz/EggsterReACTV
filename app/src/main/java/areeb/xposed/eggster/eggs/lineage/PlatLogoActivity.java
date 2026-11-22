@@ -6,6 +6,8 @@
 
 package areeb.xposed.eggster.eggs.lineage;
 
+import areeb.xposed.eggster.EggNav;
+
 import android.animation.TimeAnimator;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
@@ -329,5 +331,16 @@ public class PlatLogoActivity extends Activity {
             mAnim = null;
         }
         super.onStop();
+    }
+
+    // --- back navigation: see EggNav ---
+    @Override
+    public void onBackPressed() {
+        EggNav.back(this);
+    }
+
+    @Override
+    public void startActivity(Intent intent) {
+        super.startActivity(EggNav.carry(this, intent));
     }
 }

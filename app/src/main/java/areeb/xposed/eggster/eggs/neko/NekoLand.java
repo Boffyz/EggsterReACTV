@@ -16,6 +16,8 @@
 
 package areeb.xposed.eggster.eggs.neko;
 
+import areeb.xposed.eggster.EggNav;
+
 import android.Manifest;
 import android.app.ActionBar;
 import android.app.Activity;
@@ -324,5 +326,16 @@ public class NekoLand extends Activity implements PrefsListener {
             delete = itemView.findViewById(android.R.id.closeButton);
             share = itemView.findViewById(android.R.id.shareText);
         }
+    }
+
+    // --- back navigation: see EggNav ---
+    @Override
+    public void onBackPressed() {
+        EggNav.back(this);
+    }
+
+    @Override
+    public void startActivity(Intent intent) {
+        super.startActivity(EggNav.carry(this, intent));
     }
 }

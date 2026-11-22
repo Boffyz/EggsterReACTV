@@ -16,6 +16,9 @@
 
 package areeb.xposed.eggster.eggs.ten
 
+import areeb.xposed.eggster.EggNav
+import android.content.Intent
+
 import android.app.Activity
 import android.content.Context
 import android.content.res.Configuration
@@ -41,6 +44,17 @@ import areeb.xposed.eggster.R
 const val TAG = "Quares"
 
 class QuaresActivity : Activity() {
+
+    // --- back navigation: see EggNav ---
+    @Suppress("OVERRIDE_DEPRECATION")
+    override fun onBackPressed() {
+        EggNav.back(this)
+    }
+
+    override fun startActivity(intent: Intent?) {
+        super.startActivity(EggNav.carry(this, intent))
+    }
+
     private var q: Quare = Quare(16, 16, 1)
     private var resId = 0
     private var resName = ""

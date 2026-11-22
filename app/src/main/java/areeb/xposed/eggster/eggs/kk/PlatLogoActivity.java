@@ -16,6 +16,8 @@
 
 package areeb.xposed.eggster.eggs.kk;
 
+import areeb.xposed.eggster.EggNav;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -157,5 +159,16 @@ public class PlatLogoActivity extends Activity {
         });
 
         setContentView(mContent);
+    }
+
+    // --- back navigation: see EggNav ---
+    @Override
+    public void onBackPressed() {
+        EggNav.back(this);
+    }
+
+    @Override
+    public void startActivity(Intent intent) {
+        super.startActivity(EggNav.carry(this, intent));
     }
 }

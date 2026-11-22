@@ -1,5 +1,8 @@
 package areeb.xposed.eggster.eggs.mm;
 
+import areeb.xposed.eggster.EggNav;
+import android.content.Intent;
+
 import android.app.Activity;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -90,5 +93,16 @@ public class MLandActivity extends Activity {
         findViewById(R.id.player_minus_button).setVisibility(View.INVISIBLE);
         findViewById(R.id.player_plus_button).setVisibility(View.INVISIBLE);
         mLand.start(true);
+    }
+
+    // --- back navigation: see EggNav ---
+    @Override
+    public void onBackPressed() {
+        EggNav.back(this);
+    }
+
+    @Override
+    public void startActivity(Intent intent) {
+        super.startActivity(EggNav.carry(this, intent));
     }
 }

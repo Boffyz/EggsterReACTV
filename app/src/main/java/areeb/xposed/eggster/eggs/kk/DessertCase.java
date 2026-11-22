@@ -16,6 +16,9 @@
 
 package areeb.xposed.eggster.eggs.kk;
 
+import areeb.xposed.eggster.EggNav;
+import android.content.Intent;
+
 import android.app.Activity;
 import android.graphics.Color;
 
@@ -50,5 +53,16 @@ public class DessertCase extends Activity {
     public void onPause() {
         super.onPause();
         mView.stop();
+    }
+
+    // --- back navigation: see EggNav ---
+    @Override
+    public void onBackPressed() {
+        EggNav.back(this);
+    }
+
+    @Override
+    public void startActivity(Intent intent) {
+        super.startActivity(EggNav.carry(this, intent));
     }
 }

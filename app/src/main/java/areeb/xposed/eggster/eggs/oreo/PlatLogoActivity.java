@@ -16,6 +16,8 @@
 
 package areeb.xposed.eggster.eggs.oreo;
 
+import areeb.xposed.eggster.EggNav;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.ColorStateList;
@@ -123,5 +125,16 @@ public class PlatLogoActivity extends Activity {
                 .setDuration(500)
                 .setStartDelay(800)
                 .start();
+    }
+
+    // --- back navigation: see EggNav ---
+    @Override
+    public void onBackPressed() {
+        EggNav.back(this);
+    }
+
+    @Override
+    public void startActivity(Intent intent) {
+        super.startActivity(EggNav.carry(this, intent));
     }
 }

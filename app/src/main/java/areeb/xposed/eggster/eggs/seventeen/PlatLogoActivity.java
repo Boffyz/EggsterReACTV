@@ -16,6 +16,8 @@
 
 package areeb.xposed.eggster.eggs.seventeen;
 
+import areeb.xposed.eggster.EggNav;
+
 import static android.os.VibrationEffect.Composition.PRIMITIVE_SPIN;
 
 import static java.lang.Math.hypot;
@@ -745,6 +747,17 @@ public class PlatLogoActivity extends Activity {
         public int getPathLength() {
             return mPathLength;
         }
+    }
+
+    // --- back navigation: see EggNav ---
+    @Override
+    public void onBackPressed() {
+        EggNav.back(this);
+    }
+
+    @Override
+    public void startActivity(Intent intent) {
+        super.startActivity(EggNav.carry(this, intent));
     }
 }
 

@@ -16,6 +16,8 @@
 
 package areeb.xposed.eggster.eggs.sixteen;
 
+import areeb.xposed.eggster.EggNav;
+
 import static android.os.VibrationEffect.Composition.PRIMITIVE_SPIN;
 
 import static java.lang.Math.hypot;
@@ -539,5 +541,16 @@ public class PlatLogoActivity extends Activity {
         public static long packHdrColor(float value, float alpha) {
             return Color.valueOf(value, value, value, alpha, sSrgbExt).pack();
         }
+    }
+
+    // --- back navigation: see EggNav ---
+    @Override
+    public void onBackPressed() {
+        EggNav.back(this);
+    }
+
+    @Override
+    public void startActivity(Intent intent) {
+        super.startActivity(EggNav.carry(this, intent));
     }
 }

@@ -1,5 +1,7 @@
 package areeb.xposed.eggster.eggs.mm;
 
+import areeb.xposed.eggster.EggNav;
+
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
@@ -208,4 +210,14 @@ public class PlatLogoActivity extends Activity {
         fadeIn.start();
     }
 
+    // --- back navigation: see EggNav ---
+    @Override
+    public void onBackPressed() {
+        EggNav.back(this);
+    }
+
+    @Override
+    public void startActivity(Intent intent) {
+        super.startActivity(EggNav.carry(this, intent));
+    }
 }
