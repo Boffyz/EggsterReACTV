@@ -18,14 +18,14 @@ public enum Egg {
     OREO("OREO", "Oreo"),
     OREO81("OREO81", "Oreo 8.1"),
     PIE("PIE", "Pie"),
-    TEN("TEN", "Android 10"),
-    ELEVEN("ELEVEN", "Android 11"),
-    TWELVE("TWELVE", "Android 12"),
-    THIRTEEN("THIRTEEN", "Android 13"),
-    FOURTEEN("FOURTEEN", "Android 14"),
-    FIFTEEN("FIFTEEN", "Android 15"),
-    SIXTEEN("SIXTEEN", "Android 16"),
-    SEVENTEEN("SEVENTEEN", "Android 17"),
+    TEN("TEN", "Android Q"),
+    ELEVEN("ELEVEN", "Red Velvet Cake"),
+    TWELVE("TWELVE", "Snow Cone"),
+    THIRTEEN("THIRTEEN", "Tiramisu"),
+    FOURTEEN("FOURTEEN", "Upside Down Cake"),
+    FIFTEEN("FIFTEEN", "Vanilla Ice Cream"),
+    SIXTEEN("SIXTEEN", "Baklava"),
+    SEVENTEEN("SEVENTEEN", "Cinnamon Bun"),
     LINEAGE("LINEAGE", "LineageOS"); // shown in the Extras section, not in the main list
 
 
