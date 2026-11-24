@@ -19,6 +19,15 @@ final class ScreensaverSettings {
     static final int SIZE_MAX = 5;
     static final int SIZE_DEFAULT = 3;
 
+    static final int ROT_MIN = 0;
+    static final int ROT_MAX = 10;
+    static final int ROT_DEFAULT = 5;
+
+    /** Spin direction: each picture picks its own, or all clockwise, or all counter-clockwise. */
+    static final int DIR_MIXED = 0;
+    static final int DIR_CW = 1;
+    static final int DIR_CCW = 2;
+
     private ScreensaverSettings() {
     }
 
@@ -45,6 +54,11 @@ final class ScreensaverSettings {
             default:
                 return 1.7f;
         }
+    }
+
+    /** Multiplier for how fast pictures spin and tumble (0 = not at all, 2 = twice the normal speed). */
+    static float rotationScale(int level) {
+        return clamp(level, ROT_MIN, ROT_MAX) / 5f;
     }
 
     static int clampCount(int count) {

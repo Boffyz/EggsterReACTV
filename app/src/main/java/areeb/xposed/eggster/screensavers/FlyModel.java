@@ -30,6 +30,11 @@ final class FlyModel {
     float[] d = new float[0];
     float[] rot = new float[0];
     float[] rotSpeed = new float[0];
+    /** +1 or -1: the direction a picture spins in when directions are mixed. */
+    float[] rotSign = new float[0];
+    /** Phase of the 3D flip (radians). */
+    float[] tilt = new float[0];
+    float[] tiltSpeed = new float[0];
     /** Which picture each object shows: an index into the picture list, or -1 for a plain dot. */
     int[] kind = new int[0];
     /** Object indices sorted from far to near: the order to draw them in. */
@@ -69,6 +74,9 @@ final class FlyModel {
         d = copy(d, newCount);
         rot = copy(rot, newCount);
         rotSpeed = copy(rotSpeed, newCount);
+        rotSign = copy(rotSign, newCount);
+        tilt = copy(tilt, newCount);
+        tiltSpeed = copy(tiltSpeed, newCount);
         kind = copy(kind, newCount);
         order = new int[newCount];
         count = newCount;
@@ -81,11 +89,20 @@ final class FlyModel {
     }
 
     /** Moves everything toward the viewer. */
-    void update(float dt, float speed, boolean spin) {
+    void update(float dt, float speed, boolean spin, boolean tumble, float rotScale, int direction) {
+        final float rotStep = rotScale * dt;
         for (int i = 0; i < count; i++) {
             d[i] -= speed * dt;
+            if (tumble) {
+                tilt[i] += tiltSpeed[i] * rotStep;
+                if (tilt[i] > TWO_PI) {
+                    tilt[i] -= TWO_PI;
+                }
+            }
             if (spin) {
-                rot[i] += rotSpeed[i] * dt;
+                final float sign = direction == ScreensaverSettings.DIR_CW ? 1f
+                        : (direction == ScreensaverSettings.DIR_CCW ? -1f : rotSign[i]);
+                rot[i] += sign * rotSpeed[i] * rotStep;
                 if (rot[i] > 360f) {
                     rot[i] -= 360f;
                 } else if (rot[i] < -360f) {
@@ -106,7 +123,10 @@ final class FlyModel {
         y[i] = (float) Math.sin(angle) * radius;
         d[i] = initial ? 0.15f + 0.85f * random.nextFloat() : D_FAR + 0.15f * random.nextFloat();
         rot[i] = random.nextFloat() * 360f;
-        rotSpeed[i] = (random.nextBoolean() ? 1f : -1f) * (15f + 60f * random.nextFloat());
+        rotSpeed[i] = 15f + 60f * random.nextFloat();
+        rotSign[i] = random.nextBoolean() ? 1f : -1f;
+        tilt[i] = random.nextFloat() * TWO_PI;
+        tiltSpeed[i] = 1f + 1.5f * random.nextFloat();
         kind[i] = pickKind();
     }
 
@@ -128,6 +148,12 @@ final class FlyModel {
     static float alpha(float depth) {
         final float a = (D_FAR + 0.15f - depth) / 0.25f;
         return a < 0f ? 0f : (a > 1f ? 1f : a);
+    }
+
+    /** How wide a flipping picture looks: cos of its tilt, never quite zero (negative = seen from behind). */
+    static float flip(float tilt) {
+        final float c = (float) Math.cos(tilt);
+        return Math.abs(c) < 0.06f ? (c < 0f ? -0.06f : 0.06f) : c;
     }
 
     private int pickKind() {

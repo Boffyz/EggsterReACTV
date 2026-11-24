@@ -21,6 +21,11 @@
     <string name="ss_count">Pictures on screen: %1$d</string>
     <string name="ss_size">Size: %1$d</string>
     <string name="ss_spin">Spin the pictures</string>
+    <string name="ss_rot_speed">Spin speed: %1$d</string>
+    <string name="ss_dir_mixed">Mixed directions</string>
+    <string name="ss_dir_cw">Clockwise</string>
+    <string name="ss_dir_ccw">Counter-clockwise</string>
+    <string name="ss_tumble">3D tumble (flip like Flying Windows)</string>
     <string name="ss_preview_button">Preview full screen</string>
     <string name="ss_dream_button">Use as my phone\'s screensaver</string>
     <string name="ss_dream_hint">This opens Android\'s own screensaver settings. Choose Flying Through Space (Eggster) there.</string>

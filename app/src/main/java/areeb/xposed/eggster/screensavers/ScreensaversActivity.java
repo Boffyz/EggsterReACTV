@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
+import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -67,6 +68,7 @@ public class ScreensaversActivity extends AppCompatActivity {
         buildSetCheckboxes();
         setupSliders();
         setupSpin();
+        setupRotation();
         setupButtons();
     }
 
@@ -154,6 +156,56 @@ public class ScreensaversActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton button, boolean checked) {
                 prefs.setSpin(checked);
+                preview.loadParams();
+            }
+        });
+    }
+
+    private void setupRotation() {
+        final TextView rotLabel = (TextView) findViewById(R.id.rot_label);
+        final SeekBar rotSeek = (SeekBar) findViewById(R.id.rot_seek);
+        rotSeek.setMax(ScreensaverSettings.ROT_MAX - ScreensaverSettings.ROT_MIN);
+        rotSeek.setProgress(prefs.getRotSpeed() - ScreensaverSettings.ROT_MIN);
+        rotLabel.setText(getString(R.string.ss_rot_speed, prefs.getRotSpeed()));
+        rotSeek.setOnSeekBarChangeListener(new SliderListener() {
+            @Override
+            void onValue(int progress) {
+                final int value = ScreensaverSettings.ROT_MIN + progress;
+                prefs.setRotSpeed(value);
+                rotLabel.setText(getString(R.string.ss_rot_speed, value));
+                preview.loadParams();
+            }
+        });
+
+        final RadioGroup group = (RadioGroup) findViewById(R.id.rot_dir_group);
+        final int dir = prefs.getRotDir();
+        if (dir == ScreensaverSettings.DIR_CW) {
+            group.check(R.id.dir_cw);
+        } else if (dir == ScreensaverSettings.DIR_CCW) {
+            group.check(R.id.dir_ccw);
+        } else {
+            group.check(R.id.dir_mixed);
+        }
+        group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
+                if (checkedId == R.id.dir_cw) {
+                    prefs.setRotDir(ScreensaverSettings.DIR_CW);
+                } else if (checkedId == R.id.dir_ccw) {
+                    prefs.setRotDir(ScreensaverSettings.DIR_CCW);
+                } else {
+                    prefs.setRotDir(ScreensaverSettings.DIR_MIXED);
+                }
+                preview.loadParams();
+            }
+        });
+
+        final CheckBox tumbleBox = (CheckBox) findViewById(R.id.tumble_check);
+        tumbleBox.setChecked(prefs.isTumble());
+        tumbleBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton button, boolean checked) {
+                prefs.setTumble(checked);
                 preview.loadParams();
             }
         });

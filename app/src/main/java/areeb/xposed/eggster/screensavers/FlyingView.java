@@ -39,6 +39,9 @@ public class FlyingView extends View {
     private float speed = ScreensaverSettings.depthSpeed(ScreensaverSettings.SPEED_DEFAULT);
     private float sizeFactor = 1f;
     private boolean spin = true;
+    private boolean tumble = false;
+    private float rotScale = 1f;
+    private int rotDir = ScreensaverSettings.DIR_MIXED;
 
     /** Pixels of screen offset per unit of x / d (half the short side of the view). */
     private float spread = 1f;
@@ -64,6 +67,9 @@ public class FlyingView extends View {
         speed = ScreensaverSettings.depthSpeed(prefs.getSpeed());
         sizeFactor = ScreensaverSettings.sizeFactor(prefs.getSize());
         spin = prefs.isSpin();
+        tumble = prefs.isTumble();
+        rotScale = ScreensaverSettings.rotationScale(prefs.getRotSpeed());
+        rotDir = prefs.getRotDir();
         model.setCount(ScreensaverSettings.clampCount(prefs.getCount()));
         updateMetrics();
         invalidate();
@@ -141,7 +147,7 @@ public class FlyingView extends View {
                 if (dt > 0.05f) {
                     dt = 0.05f; // don't jump after a pause
                 }
-                model.update(dt, speed, spin);
+                model.update(dt, speed, spin, tumble, rotScale, rotDir);
                 invalidate();
             }
         });
@@ -192,7 +198,7 @@ public class FlyingView extends View {
                 final float scale = size / Math.max(bitmap.getWidth(), bitmap.getHeight());
                 matrix.reset();
                 matrix.postTranslate(-bitmap.getWidth() / 2f, -bitmap.getHeight() / 2f);
-                matrix.postScale(scale, scale);
+                matrix.postScale(scale * (tumble ? FlyModel.flip(model.tilt[i]) : 1f), scale);
                 if (spin) {
                     matrix.postRotate(model.rot[i]);
                 }

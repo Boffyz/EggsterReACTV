@@ -112,6 +112,49 @@
                     android:layout_marginTop="4dp"
                     android:text="@string/ss_spin"/>
 
+            <TextView
+                    android:id="@+id/rot_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textSize="14sp"/>
+
+            <SeekBar
+                    android:id="@+id/rot_seek"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            <RadioGroup
+                    android:id="@+id/rot_dir_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                <RadioButton
+                        android:id="@+id/dir_mixed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ss_dir_mixed"/>
+
+                <RadioButton
+                        android:id="@+id/dir_cw"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ss_dir_cw"/>
+
+                <RadioButton
+                        android:id="@+id/dir_ccw"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ss_dir_ccw"/>
+            </RadioGroup>
+
+            <CheckBox
+                    android:id="@+id/tumble_check"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ss_tumble"/>
+
             <Button
                     android:id="@+id/preview_button"
                     android:layout_width="match_parent"
