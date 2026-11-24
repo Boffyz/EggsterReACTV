@@ -56,6 +56,49 @@
                 android:layout_alignParentEnd="true"/>
     </RelativeLayout>
 
+    <!-- Screensavers -->
+    <RelativeLayout
+            android:id="@+id/extras_screensavers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:padding="7dp"
+            android:gravity="center_vertical"
+            android:clickable="true"
+            android:foreground="?attr/selectableItemBackground">
+
+        <ImageView
+                android:id="@+id/extras_screensavers_image"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:contentDescription="@string/extras_screensavers_title"
+                android:scaleType="fitCenter"
+                android:src="@drawable/logo_screensavers"/>
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/extras_screensavers_image"
+                android:layout_toEndOf="@+id/extras_screensavers_image"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/extras_screensavers_title"
+                    android:textSize="15sp"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/extras_screensavers_summary"
+                    android:textSize="12sp"/>
+        </LinearLayout>
+    </RelativeLayout>
+
     <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

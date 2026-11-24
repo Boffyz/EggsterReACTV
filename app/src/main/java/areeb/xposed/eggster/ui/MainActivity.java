@@ -57,6 +57,13 @@ public class MainActivity extends AppCompatActivity {
         View extrasFooter = getLayoutInflater().inflate(R.layout.extras_footer, eggList, false);
         eggList.addFooterView(extrasFooter, null, false);
         setupExtrasLineage(extrasFooter, eggAdapter);
+        extrasFooter.findViewById(R.id.extras_screensavers).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,
+                        areeb.xposed.eggster.screensavers.ScreensaversActivity.class));
+            }
+        });
         eggList.setAdapter(eggAdapter);
 
         handleActivation();

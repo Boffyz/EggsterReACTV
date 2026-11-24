@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Extras row -->
+    <string name="extras_screensavers_title">Screensavers</string>
+    <string name="extras_screensavers_summary">Flying Through Space, with egg pictures</string>
+
+    <!-- Settings screen -->
+    <string name="ss_title">Screensavers</string>
+    <string name="ss_saver_name">Flying Through Space</string>
+    <string name="ss_saver_desc">The classic flying-through-space screensaver, but the stars can be any of the pictures inside this app. Pick what flies, preview it here, then use it as your phone\'s screensaver.</string>
+    <string name="ss_sprites_header">What flies</string>
+    <string name="ss_set_dots">Plain dots (the classic stars)</string>
+    <string name="ss_set_desserts">Desserts (Android dessert pictures)</string>
+    <string name="ss_set_nyandroid">Nyandroid (the rainbow cat frames)</string>
+    <string name="ss_set_beans">Jelly beans</string>
+    <string name="ss_set_stars">Stars</string>
+    <string name="ss_set_egglogos">Egg logos (every egg\'s icon)</string>
+    <string name="ss_set_platlogos">Android platform logos</string>
+    <string name="ss_settings_header">Settings</string>
+    <string name="ss_speed">Speed: %1$d</string>
+    <string name="ss_count">Pictures on screen: %1$d</string>
+    <string name="ss_size">Size: %1$d</string>
+    <string name="ss_spin">Spin the pictures</string>
+    <string name="ss_preview_button">Preview full screen</string>
+    <string name="ss_dream_button">Use as my phone\'s screensaver</string>
+    <string name="ss_dream_hint">This opens Android\'s own screensaver settings. Choose Flying Through Space (Eggster) there.</string>
+    <string name="ss_dream_missing">This phone has no screensaver settings page.</string>
+    <string name="ss_more_soon">More screensavers coming soon</string>
+    <string name="ss_dream_label">Flying Through Space (Eggster)</string>
+</resources>

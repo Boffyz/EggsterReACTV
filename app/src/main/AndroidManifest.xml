@@ -375,6 +375,34 @@
                     android:resource="@xml/neko_filepaths"/>
         </provider>
 
+        <!-- Screensavers (Extras section): settings page, full-screen preview, and the system screensaver -->
+        <activity
+                android:name=".screensavers.ScreensaversActivity"
+                android:exported="true"
+                android:label="@string/ss_title"
+                android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity
+                android:name=".screensavers.ScreensaverPreviewActivity"
+                android:exported="false"
+                android:configChanges="orientation|screenSize|keyboardHidden"
+                android:theme="@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen"/>
+
+        <service
+                android:name=".screensavers.FlyingDreamService"
+                android:exported="true"
+                android:icon="@mipmap/ic_launcher"
+                android:label="@string/ss_dream_label"
+                android:permission="android.permission.BIND_DREAM_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.dreams.DreamService"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <meta-data
+                    android:name="android.service.dream"
+                    android:resource="@xml/flying_dream"/>
+        </service>
+
     </application>
 
 </manifest>
