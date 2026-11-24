@@ -40,6 +40,8 @@ public class FlyingView extends View {
     private float sizeFactor = 1f;
     private boolean spin = true;
     private boolean tumble = false;
+    /** Fixed turn applied to every picture, in degrees (the angle slider). */
+    private float angleDeg = 0f;
     private float rotScale = 1f;
     private int rotDir = ScreensaverSettings.DIR_MIXED;
 
@@ -68,6 +70,7 @@ public class FlyingView extends View {
         sizeFactor = ScreensaverSettings.sizeFactor(prefs.getSize());
         spin = prefs.isSpin();
         tumble = prefs.isTumble();
+        angleDeg = ScreensaverSettings.angleDegrees(prefs.getAngle());
         rotScale = ScreensaverSettings.rotationScale(prefs.getRotSpeed());
         rotDir = prefs.getRotDir();
         model.setCount(ScreensaverSettings.clampCount(prefs.getCount()));
@@ -199,8 +202,9 @@ public class FlyingView extends View {
                 matrix.reset();
                 matrix.postTranslate(-bitmap.getWidth() / 2f, -bitmap.getHeight() / 2f);
                 matrix.postScale(scale * (tumble ? FlyModel.flip(model.tilt[i]) : 1f), scale);
-                if (spin) {
-                    matrix.postRotate(model.rot[i]);
+                final float turn = angleDeg + (spin ? model.rot[i] : 0f);
+                if (turn != 0f) {
+                    matrix.postRotate(turn);
                 }
                 matrix.postTranslate(sx, sy);
                 paint.setAlpha((int) (alpha * 255f));

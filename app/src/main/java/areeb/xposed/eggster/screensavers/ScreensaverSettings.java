@@ -28,6 +28,10 @@ final class ScreensaverSettings {
     static final int DIR_CW = 1;
     static final int DIR_CCW = 2;
 
+    /** The angle slider: 24 steps of 15 degrees (0 to 345). */
+    static final int ANGLE_STEP = 15;
+    static final int ANGLE_LEVELS = 24;
+
     private ScreensaverSettings() {
     }
 
@@ -59,6 +63,10 @@ final class ScreensaverSettings {
     /** Multiplier for how fast pictures spin and tumble (0 = not at all, 2 = twice the normal speed). */
     static float rotationScale(int level) {
         return clamp(level, ROT_MIN, ROT_MAX) / 5f;
+    }
+
+    static float angleDegrees(int level) {
+        return clamp(level, 0, ANGLE_LEVELS - 1) * ANGLE_STEP;
     }
 
     static int clampCount(int count) {

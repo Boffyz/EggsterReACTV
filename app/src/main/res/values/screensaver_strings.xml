@@ -20,6 +20,7 @@
     <string name="ss_speed">Speed: %1$d</string>
     <string name="ss_count">Pictures on screen: %1$d</string>
     <string name="ss_size">Size: %1$d</string>
+    <string name="ss_angle">Picture angle: %1$d°</string>
     <string name="ss_spin">Spin the pictures</string>
     <string name="ss_rot_speed">Spin speed: %1$d</string>
     <string name="ss_dir_mixed">Mixed directions</string>

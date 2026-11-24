@@ -67,6 +67,7 @@ public class ScreensaversActivity extends AppCompatActivity {
 
         buildSetCheckboxes();
         setupSliders();
+        setupAngle();
         setupSpin();
         setupRotation();
         setupButtons();
@@ -144,6 +145,22 @@ public class ScreensaversActivity extends AppCompatActivity {
                 final int value = ScreensaverSettings.SIZE_MIN + progress;
                 prefs.setSize(value);
                 sizeLabel.setText(getString(R.string.ss_size, value));
+                preview.loadParams();
+            }
+        });
+    }
+
+    private void setupAngle() {
+        final TextView angleLabel = (TextView) findViewById(R.id.angle_label);
+        final SeekBar angleSeek = (SeekBar) findViewById(R.id.angle_seek);
+        angleSeek.setMax(ScreensaverSettings.ANGLE_LEVELS - 1);
+        angleSeek.setProgress(prefs.getAngle());
+        angleLabel.setText(getString(R.string.ss_angle, prefs.getAngle() * ScreensaverSettings.ANGLE_STEP));
+        angleSeek.setOnSeekBarChangeListener(new SliderListener() {
+            @Override
+            void onValue(int progress) {
+                prefs.setAngle(progress);
+                angleLabel.setText(getString(R.string.ss_angle, progress * ScreensaverSettings.ANGLE_STEP));
                 preview.loadParams();
             }
         });

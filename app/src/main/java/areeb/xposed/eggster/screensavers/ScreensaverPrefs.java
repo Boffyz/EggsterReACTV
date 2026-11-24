@@ -18,6 +18,7 @@ public final class ScreensaverPrefs {
     private static final String KEY_ROT_SPEED = "rot_speed";
     private static final String KEY_ROT_DIR = "rot_dir";
     private static final String KEY_TUMBLE = "tumble";
+    private static final String KEY_ANGLE = "angle";
 
     private final SharedPreferences prefs;
 
@@ -80,6 +81,14 @@ public final class ScreensaverPrefs {
 
     public void setRotDir(int value) {
         prefs.edit().putInt(KEY_ROT_DIR, value).apply();
+    }
+
+    public int getAngle() {
+        return ScreensaverSettings.clamp(prefs.getInt(KEY_ANGLE, 0), 0, ScreensaverSettings.ANGLE_LEVELS - 1);
+    }
+
+    public void setAngle(int level) {
+        prefs.edit().putInt(KEY_ANGLE, level).apply();
     }
 
     public boolean isTumble() {
