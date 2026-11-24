@@ -35,6 +35,11 @@ with the help of claude (im sorry)
 
 **bro**
 
+## screenshots?
+
+height="2408" alt="image" src="https://github.com/user-attachments/assets/cef7d92b-05cc-4ed7-a217-fcacfa5383b6" />
+" alt="meowscarada" width="1000" />  
+
 ## found a bug, what do i do?
 
 Open an issue (duh)
