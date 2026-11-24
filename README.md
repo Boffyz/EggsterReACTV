@@ -42,6 +42,10 @@ with the help of claude (im sorry)
 	<img src="https://github.com/Boffyz/EggsterReACTV/blob/master/screenshots/Screenshot_20261124-100823_Eggster.png" width="280" />
 	<img src="https://github.com/Boffyz/EggsterReACTV/blob/master/screenshots/Screenshot_20261124-100831_Eggster.png" width="280" />
 	<img src="https://github.com/Boffyz/EggsterReACTV/blob/master/screenshots/Screenshot_20261124-100837_Eggster.png" width="280" />
+	<img src="https://github.com/Boffyz/EggsterReACTV/blob/master/screenshots/Screenshot_20261124-100844_Eggster.png" width="280" />
+	<img src="https://github.com/Boffyz/EggsterReACTV/blob/master/screenshots/Screenshot_20261124-100856_Eggster.png" width="280" />
+	<img src="https://github.com/Boffyz/EggsterReACTV/blob/master/screenshots/Screenshot_20261124-100909_Eggster.png" width="280" />
+	
 
 ## found a bug, what do i do?
 
