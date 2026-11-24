@@ -39,6 +39,9 @@ with the help of claude (im sorry)
 <p align="center">
 	<img src="https://github.com/Boffyz/EggsterReACTV/blob/master/screenshots/Screenshot_20261124-100816_Eggster.png" width="280" />
 	<img src="https://github.com/Boffyz/EggsterReACTV/blob/master/screenshots/Screenshot_20261124-100820_Eggster.png" width="280" />
+	<img src="https://github.com/Boffyz/EggsterReACTV/blob/master/screenshots/Screenshot_20261124-100823_Eggster.png" width="280" />
+	<img src="https://github.com/Boffyz/EggsterReACTV/blob/master/screenshots/Screenshot_20261124-100831_Eggster.png" width="280" />
+	<img src="https://github.com/Boffyz/EggsterReACTV/blob/master/screenshots/Screenshot_20261124-100837_Eggster.png" width="280" />
 
 ## found a bug, what do i do?
 
