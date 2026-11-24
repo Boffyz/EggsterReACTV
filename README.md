@@ -36,8 +36,9 @@ with the help of claude (im sorry)
 **bro**
 
 ## screenshots?
-
-height="2408" alt="image" src="https://github.com/user-attachments/assets/cef7d92b-05cc-4ed7-a217-fcacfa5383b6"/> 
+<p align="center">
+	<img src="https://github.com/Boffyz/EggsterReACTV/blob/master/screenshots/Screenshot_20261124-100816_Eggster.png" width="280" />
+	<img src="https://github.com/Boffyz/EggsterReACTV/blob/master/screenshots/Screenshot_20261124-100820_Eggster.png" width="280" />
 
 ## found a bug, what do i do?
 
