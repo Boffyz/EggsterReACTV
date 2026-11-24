@@ -11,19 +11,19 @@ Xposed Module for changing Android Easter Eggs, the little interactive thing tha
 supports from **Android GingerBread**, all the way to **Vanilla Ice Cream (Android 15)** with (and without) *Root*
 
 
-## but why?
+## But why?
 
 the original repo only had a few easter eggs+i wanted to learn how to make Android Root/Xposed apps :3
 
 
-## do i need root/xposed for this app to work?
+## Do i need Root/Xposed for this app to work?
 
 no, it can **work without root**
 
 > [!CAUTION]
 > If you don't have Root yet want to Root your Phone, please bear in mind that Rooting comes with a number of risks and "downsides"
 
-## how?
+## How?
 
 with the help of claude (im sorry)
 
@@ -35,7 +35,7 @@ with the help of claude (im sorry)
 
 **bro**
 
-## screenshots?
+## Screenshots?
 <p align="center">
 	<img src="https://github.com/Boffyz/EggsterReACTV/blob/master/screenshots/Screenshot_20261124-100816_Eggster.png" width="280" />
 	<img src="https://github.com/Boffyz/EggsterReACTV/blob/master/screenshots/Screenshot_20261124-100820_Eggster.png" width="280" />
