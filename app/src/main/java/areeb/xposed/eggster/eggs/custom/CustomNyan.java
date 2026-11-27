@@ -219,7 +219,7 @@ public class CustomNyan extends Activity {
             }
 
             public void reset() {
-                final float scale = lerp(0.1f, 2f, z);
+                final float scale = lerp(0.1f, 2f, z);  // "lerp" 😭😭⁉️
                 setScaleX(scale);
                 setScaleY(scale);
 

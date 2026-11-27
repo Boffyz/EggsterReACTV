@@ -17,13 +17,14 @@ public class Contact {
                 new Contact("https://github.com/Boffyz/something",
                         "Source Code (this fork)", R.drawable.ic_git),          // Github (fork)
                 new Contact("https://boffy.neocities.org",
-                        "Website (Boffy)", R.drawable.ic_website),              // Personal website
+                        "my website :3", R.drawable.ic_website),              // Personal website
                 new Contact("https://github.com/iamareebjamal/eggster_xposed",
-                        "Original project", R.drawable.ic_git),                 // Github (upstream)
+                        "original project source", R.drawable.ic_git),                 // Github (upstream)
                 new Contact("http://forum.xda-developers.com/xposed/modules/xposed-eggster-1-2-replace-easter-eggs-t2758583",
-                        "XDA (original thread)", R.drawable.ic_xda),            // XDA
+                        "original thread", R.drawable.ic_xda),            // XDA
         };
 
         return contacts;
     }
 }
+

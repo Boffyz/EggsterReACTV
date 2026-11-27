@@ -23,8 +23,8 @@
     <string name="ss_rotate_right">Rotate right</string>
     <string name="ss_remove">Remove</string>
     <string name="ss_set_desserts">Desserts (Android dessert pictures)</string>
-    <string name="ss_set_nyandroid">Nyandroid (the rainbow cat frames)</string>
-    <string name="ss_set_beans">Jelly bean (the one with a face)</string>
+    <string name="ss_set_nyandroid">Nyandroid</string>
+    <string name="ss_set_beans">Jelly bean</string>
     <string name="ss_set_stars">Stars</string>
     <string name="ss_set_egglogos">Egg logos (every egg\'s icon)</string>
     <string name="ss_set_platlogos">Android platform logos</string>
@@ -53,4 +53,8 @@
     <string name="ss_dream_missing">This phone has no screensaver settings page.</string>
     <string name="ss_more_soon">More screensavers coming soon</string>
     <string name="ss_dream_label">Flying Through Space (Eggster)</string>
+</resources>
+r)</string>
+</resources>
+/string>
 </resources>
