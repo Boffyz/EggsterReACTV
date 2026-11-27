@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Extras row -->
@@ -24,7 +25,7 @@
     <string name="ss_remove">Remove</string>
     <string name="ss_set_desserts">Desserts (Android dessert pictures)</string>
     <string name="ss_set_nyandroid">Nyandroid</string>
-    <string name="ss_set_beans">Jelly bean</string>
+    <string name="ss_set_beans">Jellybean</string>
     <string name="ss_set_stars">Stars</string>
     <string name="ss_set_egglogos">Egg logos (every egg\'s icon)</string>
     <string name="ss_set_platlogos">Android platform logos</string>
