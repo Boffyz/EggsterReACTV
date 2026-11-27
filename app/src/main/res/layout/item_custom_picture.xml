@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center_vertical"
+              android:orientation="horizontal"
+              android:paddingLeft="16dp"
+              android:paddingTop="6dp"
+              android:paddingRight="8dp"
+              android:paddingBottom="6dp">
+
+    <ImageView
+            android:id="@+id/picture_thumb"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:background="#33000000"
+            android:contentDescription="@null"
+            android:scaleType="fitCenter"/>
+
+    <TextView
+            android:id="@+id/picture_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingLeft="12dp"
+            android:textSize="15sp"/>
+
+    <Button
+            android:id="@+id/picture_rotate_left"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:contentDescription="@string/ss_rotate_left"
+            android:minWidth="48dp"
+            android:text="↺"
+            android:textSize="22sp"/>
+
+    <Button
+            android:id="@+id/picture_rotate_right"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:contentDescription="@string/ss_rotate_right"
+            android:minWidth="48dp"
+            android:text="↻"
+            android:textSize="22sp"/>
+
+    <Button
+            android:id="@+id/picture_remove"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:contentDescription="@string/ss_remove"
+            android:minWidth="48dp"
+            android:text="✕"
+            android:textSize="20sp"/>
+</LinearLayout>

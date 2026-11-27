@@ -17,6 +17,9 @@ final class FlyModel {
     /** Pictures that get this close are recycled to the far end. */
     static final float D_NEAR = 0.06f;
 
+    /** Pictures fade out over this much depth before they reach D_NEAR, so they never pop away. */
+    static final float FADE_NEAR = 0.18f;
+
     /** When plain dots are mixed with pictures, this share of the objects are dots. */
     static final float DOT_SHARE = 0.35f;
 
@@ -154,6 +157,13 @@ final class FlyModel {
     static float flip(float tilt) {
         final float c = (float) Math.cos(tilt);
         return Math.abs(c) < 0.06f ? (c < 0f ? -0.06f : 0.06f) : c;
+    }
+
+    /** 1 while a picture is comfortably far, easing down to 0 exactly where it gets recycled. */
+    static float nearAlpha(float depth) {
+        final float t = (depth - D_NEAR) / FADE_NEAR;
+        final float c = t < 0f ? 0f : (t > 1f ? 1f : t);
+        return c * c * (3f - 2f * c);
     }
 
     private int pickKind() {

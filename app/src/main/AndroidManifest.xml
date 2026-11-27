@@ -383,6 +383,12 @@
                 android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity
+                android:name=".screensavers.ScreensaverPicturesActivity"
+                android:exported="false"
+                android:label="@string/ss_pictures_title"
+                android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity
                 android:name=".screensavers.ScreensaverPreviewActivity"
                 android:exported="false"
                 android:configChanges="orientation|screenSize|keyboardHidden"

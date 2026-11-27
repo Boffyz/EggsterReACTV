@@ -19,6 +19,7 @@ public final class ScreensaverPrefs {
     private static final String KEY_ROT_DIR = "rot_dir";
     private static final String KEY_TUMBLE = "tumble";
     private static final String KEY_ANGLE = "angle";
+    private static final String KEY_BACKGROUND = "background";
 
     private final SharedPreferences prefs;
 
@@ -89,6 +90,15 @@ public final class ScreensaverPrefs {
 
     public void setAngle(int level) {
         prefs.edit().putInt(KEY_ANGLE, level).apply();
+    }
+
+    /** Which background is behind the flying pictures (see SpaceBackground: 0 = black). */
+    public int getBackground() {
+        return ScreensaverSettings.clamp(prefs.getInt(KEY_BACKGROUND, 0), 0, SpaceBackground.STYLE_COUNT - 1);
+    }
+
+    public void setBackground(int style) {
+        prefs.edit().putInt(KEY_BACKGROUND, style).apply();
     }
 
     public boolean isTumble() {

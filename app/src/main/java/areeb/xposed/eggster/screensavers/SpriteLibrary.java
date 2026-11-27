@@ -3,11 +3,13 @@ package areeb.xposed.eggster.screensavers;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 
 import androidx.core.content.ContextCompat;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -21,6 +23,7 @@ import areeb.xposed.eggster.R;
 public final class SpriteLibrary {
 
     public static final String DOTS = "dots";
+    public static final String CUSTOM = "custom";
     public static final String DESSERTS = "desserts";
     public static final String NYANDROID = "nyandroid";
     public static final String BEANS = "beans";
@@ -30,7 +33,7 @@ public final class SpriteLibrary {
 
     /** Every set, in the order they are listed on the settings screen. */
     public static final String[] SET_IDS = {
-            DOTS, DESSERTS, NYANDROID, BEANS, STARS, EGG_LOGOS, PLATFORM_LOGOS
+            DOTS, CUSTOM, DESSERTS, NYANDROID, BEANS, STARS, EGG_LOGOS, PLATFORM_LOGOS
     };
 
     private static final String[] DESSERT_NAMES = {
@@ -41,8 +44,9 @@ public final class SpriteLibrary {
             "dessert_zombiegingerbread", "jandycane"
     };
 
+    /** Only the jelly bean that has a face (and antennae); the plain beans are left out on purpose. */
     private static final String[] BEAN_NAMES = {
-            "redbean0", "redbean1", "redbean2", "redbeandroid"
+            "redbeandroid"
     };
 
     private static final String[] EGG_LOGO_NAMES = {
@@ -69,6 +73,8 @@ public final class SpriteLibrary {
         switch (setId) {
             case DOTS:
                 return R.string.ss_set_dots;
+            case CUSTOM:
+                return R.string.ss_set_custom;
             case DESSERTS:
                 return R.string.ss_set_desserts;
             case NYANDROID:
@@ -122,6 +128,15 @@ public final class SpriteLibrary {
             if (!sets.contains(setId)) {
                 continue;
             }
+            if (CUSTOM.equals(setId)) {
+                for (File file : CustomPictures.list(context)) {
+                    final Bitmap bitmap = CustomPictures.load(file, maxPx);
+                    if (bitmap != null) {
+                        result.add(bitmap);
+                    }
+                }
+                continue;
+            }
             for (String name : drawableNames(setId)) {
                 final int resId = context.getResources()
                         .getIdentifier(name, "drawable", context.getPackageName());
@@ -135,6 +150,38 @@ public final class SpriteLibrary {
             }
         }
         return result;
+    }
+
+    /**
+     * Some pictures (the dessert statues) come on an opaque black square. If all four corners are black,
+     * turn the black into see-through, keeping the picture's own colors, so it sits nicely on any background.
+     */
+    private static void keyOutBlack(Bitmap bitmap) {
+        final int w = bitmap.getWidth();
+        final int h = bitmap.getHeight();
+        final int[] corners = {bitmap.getPixel(0, 0), bitmap.getPixel(w - 1, 0),
+                bitmap.getPixel(0, h - 1), bitmap.getPixel(w - 1, h - 1)};
+        for (int corner : corners) {
+            if (Color.alpha(corner) < 250 || Color.red(corner) > 24
+                    || Color.green(corner) > 24 || Color.blue(corner) > 24) {
+                return;
+            }
+        }
+        final int[] pixels = new int[w * h];
+        bitmap.getPixels(pixels, 0, w, 0, 0, w, h);
+        for (int i = 0; i < pixels.length; i++) {
+            final int c = pixels[i];
+            final int r = Color.red(c);
+            final int g = Color.green(c);
+            final int b = Color.blue(c);
+            final int max = Math.max(r, Math.max(g, b));
+            if (max == 0) {
+                pixels[i] = 0;
+            } else {
+                pixels[i] = Color.argb(max, r * 255 / max, g * 255 / max, b * 255 / max);
+            }
+        }
+        bitmap.setPixels(pixels, 0, w, 0, 0, w, h);
     }
 
     private static Bitmap render(Context context, int resId, int maxPx) {
@@ -156,6 +203,7 @@ public final class SpriteLibrary {
             final Canvas canvas = new Canvas(bitmap);
             drawable.setBounds(0, 0, bw, bh);
             drawable.draw(canvas);
+            keyOutBlack(bitmap);
             return bitmap;
         } catch (Throwable t) {
             Log.w("SpriteLibrary", "Skipping a picture that failed to load", t);

@@ -60,6 +60,64 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"/>
 
+            <Button
+                    android:id="@+id/pictures_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ss_pictures_button"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/ss_bg_header"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="15sp"
+                    android:textStyle="bold"/>
+
+            <RadioGroup
+                    android:id="@+id/bg_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                <RadioButton
+                        android:id="@+id/bg_black"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ss_bg_black"/>
+
+                <RadioButton
+                        android:id="@+id/bg_space"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ss_bg_space"/>
+
+                <RadioButton
+                        android:id="@+id/bg_pink"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ss_bg_pink"/>
+
+                <RadioButton
+                        android:id="@+id/bg_teal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ss_bg_teal"/>
+
+                <RadioButton
+                        android:id="@+id/bg_custom"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ss_bg_custom"/>
+            </RadioGroup>
+
+            <Button
+                    android:id="@+id/bg_choose_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ss_bg_choose"/>
+
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

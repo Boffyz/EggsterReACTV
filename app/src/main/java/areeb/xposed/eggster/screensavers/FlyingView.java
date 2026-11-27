@@ -50,6 +50,10 @@ public class FlyingView extends View {
     /** Size in pixels of an object at depth 1.0. */
     private float baseSize = 1f;
 
+    private Bitmap background;
+    private int bgStyle = SpaceBackground.BLACK;
+    private int bgToken = 0;
+
     private TimeAnimator animator;
 
     public FlyingView(Context context) {
@@ -71,6 +75,11 @@ public class FlyingView extends View {
         spin = prefs.isSpin();
         tumble = prefs.isTumble();
         angleDeg = ScreensaverSettings.angleDegrees(prefs.getAngle());
+        final int style = prefs.getBackground();
+        if (style != bgStyle) {
+            bgStyle = style;
+            reloadBackground();
+        }
         rotScale = ScreensaverSettings.rotationScale(prefs.getRotSpeed());
         rotDir = prefs.getRotDir();
         model.setCount(ScreensaverSettings.clampCount(prefs.getCount()));
@@ -104,6 +113,36 @@ public class FlyingView extends View {
         }, "screensaver-sprites").start();
     }
 
+    /** Redraws the background for the chosen style at the view's current size (in the background). */
+    public void reloadBackground() {
+        final int token = ++bgToken;
+        final int style = bgStyle;
+        final int w = getWidth();
+        final int h = getHeight();
+        if (style == SpaceBackground.BLACK || w <= 0 || h <= 0) {
+            background = null; // black; if the size isn't known yet, onSizeChanged asks again
+            invalidate();
+            return;
+        }
+        final Context app = getContext().getApplicationContext();
+        final float density = getResources().getDisplayMetrics().density;
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                final Bitmap rendered = SpaceBackground.render(app, style, w, h, density);
+                mainHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (token == bgToken) {
+                            background = rendered;
+                            invalidate();
+                        }
+                    }
+                });
+            }
+        }, "screensaver-background").start();
+    }
+
     private void updateMetrics() {
         final float shortSide = Math.min(getWidth(), getHeight());
         spread = shortSide * 0.5f;
@@ -114,6 +153,7 @@ public class FlyingView extends View {
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         updateMetrics();
+        reloadBackground();
     }
 
     @Override
@@ -168,6 +208,9 @@ public class FlyingView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        if (background != null) {
+            canvas.drawBitmap(background, 0f, 0f, null);
+        }
         if (!ready) {
             return;
         }
@@ -187,7 +230,7 @@ public class FlyingView extends View {
                 model.respawn(i, false); // flew off the edge of the screen
                 continue;
             }
-            final float alpha = FlyModel.alpha(depth);
+            final float alpha = FlyModel.alpha(depth) * FlyModel.nearAlpha(depth);
             if (alpha <= 0f) {
                 continue;
             }
