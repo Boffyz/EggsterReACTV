@@ -7,12 +7,12 @@ package areeb.xposed.eggster.screensavers;
 final class ScreensaverSettings {
 
     static final int SPEED_MIN = 1;
-    static final int SPEED_MAX = 10;
+    static final int SPEED_MAX = 50;
     static final int SPEED_DEFAULT = 5;
 
     static final int COUNT_MIN = 10;
     static final int COUNT_STEP = 10;
-    static final int COUNT_MAX = 150;
+    static final int COUNT_MAX = 200;
     static final int COUNT_DEFAULT = 60;
 
     static final int SIZE_MIN = 1;
